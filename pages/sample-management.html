@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample Details | GeoLab Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo-mark" aria-hidden="true">
+          <span class="logo-line"></span>
+          <span class="logo-core">GL</span>
+          <span class="logo-line"></span>
+        </div>
+        <div>
+          <span class="brand-name">GeoLab Pro</span>
+          <span class="brand-subtitle">Civil Geotechnical Lab</span>
+        </div>
+      </div>
+
+      <nav class="nav-list" aria-label="Main navigation">
+        <a class="nav-link" href="../index.html"><span class="nav-icon">H</span><span>Home</span></a>
+        <a class="nav-link active" href="sample-management.html" aria-current="page"><span class="nav-icon">S</span><span>Sample Details</span></a>
+        <a class="nav-link" href="sieve-analysis.html"><span class="nav-icon">A</span><span>Sieve Analysis</span></a>
+        <a class="nav-link" href="new-analysis.html"><span class="nav-icon">N</span><span>New Analysis</span></a>
+        <a class="nav-link" href="reports.html"><span class="nav-icon">R</span><span>Previous Reports</span></a>
+        <a class="nav-link" href="about-software.html"><span class="nav-icon">A</span><span>About Software</span></a>
+        <a class="nav-link" href="settings.html"><span class="nav-icon">S</span><span>Settings</span></a>
+      </nav>
+    </aside>
+
+    <div class="content-area">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" type="button" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div>
+          <p class="eyebrow">Sample Intake</p>
+          <h1>Sample Details</h1>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          <span>Dark Mode</span>
+        </button>
+      </header>
+
+      <main class="main-content">
+        <section class="form-layout" aria-labelledby="sampleDetailsTitle">
+          <article class="panel sample-form-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">GeoLab Pro</p>
+                <h2 id="sampleDetailsTitle">Enter Sample Details</h2>
+              </div>
+            </div>
+
+            <form class="sample-form" id="sampleDetailsForm" novalidate>
+              <div class="form-grid">
+                <label class="field-group" for="sampleName">
+                  <span>Sample Name</span>
+                  <input id="sampleName" name="sampleName" type="text" placeholder="Black cotton soil" required>
+                </label>
+
+                <label class="field-group" for="sampleId">
+                  <span>Sample ID</span>
+                  <input id="sampleId" name="sampleId" type="text" placeholder="GL-SMP-001" required>
+                </label>
+
+                <label class="field-group" for="location">
+                  <span>Location</span>
+                  <input id="location" name="location" type="text" placeholder="Site location" required>
+                </label>
+
+                <label class="field-group" for="date">
+                  <span>Date</span>
+                  <input id="date" name="date" type="date" required>
+                </label>
+
+                <label class="field-group" for="operator">
+                  <span>Operator</span>
+                  <input id="operator" name="operator" type="text" placeholder="Lab operator name" required>
+                </label>
+
+                <label class="field-group" for="college">
+                  <span>College</span>
+                  <input id="college" name="college" type="text" placeholder="College name" required>
+                </label>
+
+                <label class="field-group" for="projectName">
+                  <span>Project Name</span>
+                  <input id="projectName" name="projectName" type="text" placeholder="Foundation investigation" required>
+                </label>
+
+                <label class="field-group" for="sampleWeight">
+                  <span>Sample Weight (g)</span>
+                  <input id="sampleWeight" name="sampleWeight" type="number" min="0.01" step="0.01" placeholder="Weight in grams" required>
+                </label>
+              </div>
+
+              <p class="form-message" id="sampleFormMessage" role="status" aria-live="polite"></p>
+
+              <div class="form-actions">
+                <button class="secondary-button" type="reset">Clear</button>
+                <button class="primary-button" type="submit">Next</button>
+              </div>
+            </form>
+          </article>
+
+          <aside class="panel form-side-panel" aria-label="Sample details status">
+            <p class="eyebrow">Current Step</p>
+            <h2>Sample Information</h2>
+            <p>
+              Record the basic sample identity and project information before moving to analysis.
+              Sample weight must be greater than zero.
+            </p>
+            <div class="step-list">
+              <span class="step-item active">1. Sample Details</span>
+              <span class="step-item">2. Sieve Analysis</span>
+              <span class="step-item">3. Review</span>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

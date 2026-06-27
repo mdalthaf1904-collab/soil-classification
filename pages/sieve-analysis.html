@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sieve Analysis | GeoLab Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo-mark" aria-hidden="true">
+          <span class="logo-line"></span>
+          <span class="logo-core">GL</span>
+          <span class="logo-line"></span>
+        </div>
+        <div>
+          <span class="brand-name">GeoLab Pro</span>
+          <span class="brand-subtitle">Civil Geotechnical Lab</span>
+        </div>
+      </div>
+
+      <nav class="nav-list" aria-label="Main navigation">
+        <a class="nav-link" href="../index.html"><span class="nav-icon">H</span><span>Home</span></a>
+        <a class="nav-link" href="sample-management.html"><span class="nav-icon">S</span><span>Sample Details</span></a>
+        <a class="nav-link active" href="sieve-analysis.html" aria-current="page"><span class="nav-icon">A</span><span>Sieve Analysis</span></a>
+        <a class="nav-link" href="soil-detection.html"><span class="nav-icon">D</span><span>Soil Detection</span></a>
+        <a class="nav-link" href="gsd-analysis.html"><span class="nav-icon">G</span><span>GSD Curve</span></a>
+        <a class="nav-link" href="atterberg-limits.html"><span class="nav-icon">L</span><span>Atterberg Limits</span></a>
+      </nav>
+    </aside>
+
+    <div class="content-area">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" type="button" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div>
+          <p class="eyebrow">Laboratory Observation</p>
+          <h1>Sieve Analysis</h1>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          <span>Dark Mode</span>
+        </button>
+      </header>
+
+      <main class="main-content">
+        <section class="sieve-layout" aria-labelledby="sieveAnalysisTitle">
+          <article class="panel sieve-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Observation Table</p>
+                <h2 id="sieveAnalysisTitle">Dry Sieve Analysis</h2>
+              </div>
+            </div>
+
+            <div class="sieve-summary-grid" aria-label="Sieve analysis summary">
+              <div class="summary-tile">
+                <span>Sample Weight</span>
+                <strong><span id="sieveSampleWeight">0.00</span> g</strong>
+              </div>
+              <div class="summary-tile">
+                <span>Total Retained Weight</span>
+                <strong><span id="totalRetainedWeight">0.00</span> g</strong>
+              </div>
+              <div class="summary-tile">
+                <span>Weight Loss</span>
+                <strong><span id="weightLoss">0.00</span> g</strong>
+              </div>
+              <div class="summary-tile">
+                <span>Weight Loss Percentage</span>
+                <strong><span id="weightLossPercentage">0.00</span>%</strong>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table class="observation-table" id="sieveTable">
+                <thead>
+                  <tr>
+                    <th>IS Sieve Size</th>
+                    <th>Retained Weight (g)</th>
+                    <th>% Retained (Auto)</th>
+                    <th>Cumulative % Retained (Auto)</th>
+                    <th>% Passing (Auto)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>80 mm</td><td><input type="number" min="0" step="0.01" data-retained></td><td data-percent-retained>0.00</td><td data-cumulative-retained>0.00</td><td data-percent-passing>100.00</td></tr>
+                  <tr><td>40 mm</td><td><input type="number" min="0" step="0.01" data-retained></td><td data-percent-retained>0.00</td><td data-cumulative-retained>0.00</td><td data-percent-passing>100.00</td></tr>
+                  <tr><td>20 mm</td><td><input type="number" min="0" step="0.01" data-retained></td><td data-percent-retained>0.00</td><td data-cumulative-retained>0.00</td><td data-percent-passing>100.00</td></tr>
+                  <tr><td>10 mm</td><td><input type="number" min="0" step="0.01" data-retained></td><td data-percent-retained>0.00</td><td data-cumulative-retained>0.00</td><td data-percent-passing>100.00</td></tr>
+                  <tr><td>4.75 mm</td><td><input type="number" min="0" step="0.01" data-retained></td><td data-percent-retained>0.00</td><td data-cumulative-retained>0.00</td><td data-percent-passing>100.00</td></tr>
+                  <tr><td>2.36 mm</td><td><input type="number" min="0" step="0.01" data-retained></td><td data-percent-retained>0.00</td><td data-cumulative-retained>0.00</td><td data-percent-passing>100.00</td></tr>
+                  <tr><td>1.18 mm</td><td><input type="number" min="0" step="0.01" data-retained></td><td data-percent-retained>0.00</td><td data-cumulative-retained>0.00</td><td data-percent-passing>100.00</td></tr>
+                  <tr><td>600 μm</td><td><input type="number" min="0" step="0.01" data-retained></td><td data-percent-retained>0.00</td><td data-cumulative-retained>0.00</td><td data-percent-passing>100.00</td></tr>
+                  <tr><td>300 μm</td><td><input type="number" min="0" step="0.01" data-retained></td><td data-percent-retained>0.00</td><td data-cumulative-retained>0.00</td><td data-percent-passing>100.00</td></tr>
+                  <tr><td>150 μm</td><td><input type="number" min="0" step="0.01" data-retained></td><td data-percent-retained>0.00</td><td data-cumulative-retained>0.00</td><td data-percent-passing>100.00</td></tr>
+                  <tr><td>75 μm</td><td><input type="number" min="0" step="0.01" data-retained></td><td data-percent-retained>0.00</td><td data-cumulative-retained>0.00</td><td data-percent-passing>100.00</td></tr>
+                  <tr><td>Pan</td><td><input type="number" min="0" step="0.01" data-retained></td><td data-percent-retained>0.00</td><td data-cumulative-retained>0.00</td><td data-percent-passing>100.00</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="form-message" id="sieveMessage" role="status" aria-live="polite"></p>
+
+            <div class="form-actions sieve-actions">
+              <a class="secondary-button" href="sample-management.html">Previous</a>
+              <button class="secondary-button" id="resetSieveTable" type="button">Reset Table</button>
+              <button class="secondary-button" id="saveSieveAnalysis" type="button">Save Analysis</button>
+              <button class="primary-button" id="nextSieveStep" type="button">Next</button>
+            </div>
+          </article>
+
+          <aside class="panel form-side-panel" aria-label="Sieve analysis status">
+            <p class="eyebrow">Current Step</p>
+            <h2>Sieve Analysis</h2>
+            <p>
+              Enter retained weights for each sieve. Percent retained, cumulative percent retained,
+              percent passing, total retained, and weight loss are calculated automatically.
+            </p>
+            <div class="step-list">
+              <span class="step-item">1. Sample Details</span>
+              <span class="step-item active">2. Sieve Analysis</span>
+              <span class="step-item">3. Soil Detection</span>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
