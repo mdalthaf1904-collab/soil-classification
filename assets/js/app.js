@@ -1205,6 +1205,9 @@ function renderLiquidLimitChart() {
   if (liquidLimitChartInstance) {
     liquidLimitChartInstance.destroy();
   }
+  const liquidLimitPoint = regression && Number.isFinite(regression.liquidLimitAt25)
+    ? [{ x: 25, y: regression.liquidLimitAt25 }]
+    : [];
 
   const datasets = [
     {
@@ -1247,6 +1250,20 @@ function renderLiquidLimitChart() {
       cubicInterpolationMode: "monotone",
     });
   }
+  if (liquidLimitPoint.length) {
+    datasets.push({
+      label: "Liquid Limit (25 blows)",
+      data: liquidLimitPoint,
+      parsing: false,
+      normalized: true,
+      showLine: false,
+      pointStyle: "rectRounded",
+      pointRadius: 8,
+      pointBackgroundColor: "#dc2626",
+      pointBorderColor: "#ffffff",
+      borderWidth: 2,
+    });
+  }
 
   liquidLimitChartInstance = new Chart(liquidLimitChartCanvas, {
     type: "line",
@@ -1265,11 +1282,15 @@ function renderLiquidLimitChart() {
         tooltip: {
           callbacks: {
             label(context) {
+              const raw = context.raw || {};
+              const x = Number.isFinite(raw.x) ? raw.x : context.parsed?.x;
+              const y = Number.isFinite(raw.y) ? raw.y : context.parsed?.y;
+
               if (context.dataset.label === "Observed Water Content") {
-                return `Blows: ${context.parsed.x}, Water Content: ${formatNumber(context.parsed.y)}%`;
+                return `Blows: ${formatNumber(x)}, Water Content: ${formatNumber(y)}%`;
               }
 
-              return `Liquid Limit point: ${formatNumber(context.parsed.y)}% at ${formatNumber(context.parsed.x)} blows`;
+              return `Liquid Limit point: ${formatNumber(y)}% at ${formatNumber(x)} blows`;
             },
           },
         },
@@ -1985,3 +2006,4 @@ savePlasticLimitTableButton?.addEventListener("click", () => {
 
 loadPlasticLimitTable();
 updateAtterbergSummaryCards();
+
