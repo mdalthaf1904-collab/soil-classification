@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoLab Pro - Intelligent Geotechnical Laboratory Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo-mark" aria-hidden="true">
+          <span class="logo-line"></span>
+          <span class="logo-core">GL</span>
+          <span class="logo-line"></span>
+        </div>
+        <div>
+          <span class="brand-name">GeoLab Pro</span>
+          <span class="brand-subtitle">Civil Geotechnical Lab</span>
+        </div>
+      </div>
+
+      <nav class="nav-list" aria-label="Main navigation">
+        <a class="nav-link active" href="index.html" aria-current="page">
+          <span class="nav-icon">H</span>
+          <span>Home</span>
+        </a>
+        <a class="nav-link" href="pages/sample-management.html">
+          <span class="nav-icon">N</span>
+          <span>New Analysis</span>
+        </a>
+        <a class="nav-link" href="pages/reports.html">
+          <span class="nav-icon">R</span>
+          <span>Previous Reports</span>
+        </a>
+        <a class="nav-link" href="pages/about-software.html">
+          <span class="nav-icon">A</span>
+          <span>About Software</span>
+        </a>
+        <a class="nav-link" href="pages/settings.html">
+          <span class="nav-icon">S</span>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span>Designed for soil labs, site teams, and consulting engineers.</span>
+      </div>
+    </aside>
+
+    <div class="content-area">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" type="button" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div>
+          <p class="eyebrow">Intelligent Geotechnical Laboratory Assistant</p>
+          <h1>Home Dashboard</h1>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          <span>Dark Mode</span>
+        </button>
+      </header>
+
+      <main class="main-content home-content">
+        <section class="hero-panel" aria-labelledby="homeTitle">
+          <div class="hero-copy">
+            <div class="hero-logo">
+              <div class="logo-mark large" aria-hidden="true">
+                <span class="logo-line"></span>
+                <span class="logo-core">GL</span>
+                <span class="logo-line"></span>
+              </div>
+              <div>
+                <p class="eyebrow">GeoLab Pro</p>
+                <h2 id="homeTitle">Intelligent Geotechnical Laboratory Assistant</h2>
+              </div>
+            </div>
+            <p>
+              A professional workspace for managing geotechnical laboratory workflows, report preparation,
+              engineering documentation, and project review.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-button" href="pages/sample-management.html">New Analysis</a>
+              <a class="secondary-button" href="pages/reports.html">Previous Reports</a>
+            </div>
+          </div>
+          <div class="engineering-board" aria-hidden="true">
+            <div class="soil-stack">
+              <span class="layer layer-fill"></span>
+              <span class="layer layer-sand"></span>
+              <span class="layer layer-clay"></span>
+              <span class="layer layer-rock"></span>
+            </div>
+            <div class="borehole-card">
+              <span>BH-01</span>
+              <strong>22.5 m</strong>
+              <small>Foundation investigation</small>
+            </div>
+          </div>
+        </section>
+
+        <section class="quick-actions" aria-label="Primary actions">
+          <a class="action-card" href="pages/sample-management.html">
+            <span class="action-icon">+</span>
+            <div>
+              <h3>New Analysis</h3>
+              <p>Start a new geotechnical study workspace.</p>
+            </div>
+          </a>
+          <a class="action-card" href="pages/reports.html">
+            <span class="action-icon">R</span>
+            <div>
+              <h3>Previous Reports</h3>
+              <p>Open saved laboratory and project reports.</p>
+            </div>
+          </a>
+          <a class="action-card" href="pages/about-software.html">
+            <span class="action-icon">i</span>
+            <div>
+              <h3>About Software</h3>
+              <p>Review the purpose and scope of GeoLab Pro.</p>
+            </div>
+          </a>
+          <a class="action-card" href="pages/settings.html">
+            <span class="action-icon">S</span>
+            <div>
+              <h3>Settings</h3>
+              <p>Manage lab preferences and application options.</p>
+            </div>
+          </a>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel chart-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Lab Overview</p>
+                <h2>Workflow Snapshot</h2>
+              </div>
+            </div>
+            <canvas id="throughputChart" aria-label="Geotechnical workflow snapshot chart"></canvas>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Civil Engineering Focus</p>
+                <h2>Workspace Areas</h2>
+              </div>
+            </div>
+            <div class="worklist">
+              <div class="work-item">
+                <span class="status-dot high"></span>
+                <div>
+                  <strong>Soil investigation records</strong>
+                  <small>Borehole logs, sample references, and field notes.</small>
+                </div>
+              </div>
+              <div class="work-item">
+                <span class="status-dot medium"></span>
+                <div>
+                  <strong>Laboratory documentation</strong>
+                  <small>Test files, review status, and engineering attachments.</small>
+                </div>
+              </div>
+              <div class="work-item">
+                <span class="status-dot low"></span>
+                <div>
+                  <strong>Report coordination</strong>
+                  <small>Draft reports, issued reports, and project archives.</small>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atterberg Limits | GeoLab Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo-mark" aria-hidden="true">
+          <span class="logo-line"></span>
+          <span class="logo-core">GL</span>
+          <span class="logo-line"></span>
+        </div>
+        <div>
+          <span class="brand-name">GeoLab Pro</span>
+          <span class="brand-subtitle">Civil Geotechnical Lab</span>
+        </div>
+      </div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <a class="nav-link" href="../index.html"><span class="nav-icon">H</span><span>Home</span></a>
+        <a class="nav-link" href="sample-management.html"><span class="nav-icon">S</span><span>Sample Details</span></a>
+        <a class="nav-link" href="sieve-analysis.html"><span class="nav-icon">A</span><span>Sieve Analysis</span></a>
+        <a class="nav-link" href="soil-detection.html"><span class="nav-icon">D</span><span>Soil Detection</span></a>
+        <a class="nav-link" href="gsd-analysis.html"><span class="nav-icon">G</span><span>GSD Curve</span></a>
+        <a class="nav-link active" href="atterberg-limits.html" aria-current="page"><span class="nav-icon">L</span><span>Atterberg Limits</span></a>
+      </nav>
+    </aside>
+
+    <div class="content-area">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" type="button" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div>
+          <p class="eyebrow">Consistency Limits</p>
+          <h1>Atterberg Limits</h1>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          <span>Dark Mode</span>
+        </button>
+      </header>
+
+      <main class="main-content">
+        <section class="atterberg-layout" aria-labelledby="atterbergTitle">
+          <article class="panel atterberg-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Lab Record</p>
+                <h2 id="atterbergTitle">Atterberg Limits Workspace</h2>
+              </div>
+            </div>
+
+            <div class="tab-strip" role="tablist" aria-label="Atterberg limit sections">
+              <button class="tab-button active" type="button" role="tab" aria-selected="true" aria-controls="liquidLimitPanel" id="liquidLimitTab" data-tab-target="liquidLimitPanel">Liquid Limit</button>
+              <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="plasticLimitPanel" id="plasticLimitTab" data-tab-target="plasticLimitPanel">Plastic Limit</button>
+              <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="plasticityChartPanel" id="plasticityChartTab" data-tab-target="plasticityChartPanel">Plasticity Chart</button>
+            </div>
+
+            <div class="sieve-summary-grid atterberg-summary-grid" aria-label="Atterberg summary">
+              <div class="summary-tile">
+                <span>Liquid Limit (LL)</span>
+                <strong><span id="summaryLiquidLimit">0.00</span>%</strong>
+              </div>
+              <div class="summary-tile">
+                <span>Plastic Limit (PL)</span>
+                <strong><span id="summaryPlasticLimit">0.00</span>%</strong>
+              </div>
+              <div class="summary-tile">
+                <span>Plasticity Index (PI)</span>
+                <strong><span id="summaryPlasticityIndex">0.00</span>%</strong>
+              </div>
+            </div>
+
+            <p class="form-message" id="atterbergSummaryMessage" role="status" aria-live="polite"></p>
+
+            <section class="tab-panel active" id="liquidLimitPanel" role="tabpanel" aria-labelledby="liquidLimitTab">
+              <div class="record-band">
+                <span class="record-label">Laboratory Mode</span>
+                <strong>Liquid Limit observation table with automatic Water Content calculation.</strong>
+              </div>
+
+              <div class="liquid-toolbar">
+                <button class="secondary-button" id="addLiquidLimitTrial" type="button">Add Trial</button>
+                <button class="secondary-button" id="resetLiquidLimitTable" type="button">Reset</button>
+                <button class="primary-button" id="saveLiquidLimitTable" type="button">Save</button>
+              </div>
+
+              <div class="table-wrap">
+                <table class="observation-table liquid-limit-table" id="liquidLimitTable">
+                  <thead>
+                    <tr>
+                      <th>Trial</th>
+                      <th>Water Added (%)</th>
+                      <th>No. of Blows</th>
+                      <th>Container No.</th>
+                      <th>Empty Container (W1)</th>
+                      <th>Wet Soil + Container (W2)</th>
+                      <th>Dry Soil + Container (W3)</th>
+                      <th>Water Content (%) (Auto)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="waterAdded"></td>
+                      <td><input type="number" min="0" step="1" data-liquid-field="blows"></td>
+                      <td><input type="text" data-liquid-field="containerNo"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w1"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w2"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w3"></td>
+                      <td data-liquid-water-content>0.00</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="waterAdded"></td>
+                      <td><input type="number" min="0" step="1" data-liquid-field="blows"></td>
+                      <td><input type="text" data-liquid-field="containerNo"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w1"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w2"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w3"></td>
+                      <td data-liquid-water-content>0.00</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="waterAdded"></td>
+                      <td><input type="number" min="0" step="1" data-liquid-field="blows"></td>
+                      <td><input type="text" data-liquid-field="containerNo"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w1"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w2"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w3"></td>
+                      <td data-liquid-water-content>0.00</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="waterAdded"></td>
+                      <td><input type="number" min="0" step="1" data-liquid-field="blows"></td>
+                      <td><input type="text" data-liquid-field="containerNo"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w1"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w2"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w3"></td>
+                      <td data-liquid-water-content>0.00</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="waterAdded"></td>
+                      <td><input type="number" min="0" step="1" data-liquid-field="blows"></td>
+                      <td><input type="text" data-liquid-field="containerNo"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w1"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w2"></td>
+                      <td><input type="number" min="0" step="0.01" data-liquid-field="w3"></td>
+                      <td data-liquid-water-content>0.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="sieve-summary-grid liquid-summary-grid" aria-label="Liquid limit summary">
+                <div class="summary-tile">
+                  <span>Flow Index</span>
+                  <strong id="flowIndexValue">0.00</strong>
+                </div>
+                <div class="summary-tile">
+                  <span>Liquid Limit at 25 Blows</span>
+                  <strong><span id="liquidLimitAt25Value">0.00</span>%</strong>
+                </div>
+              </div>
+
+              <div class="gsd-chart-wrap liquid-chart-wrap">
+                <canvas id="liquidLimitChart" aria-label="Semi-log flow curve"></canvas>
+              </div>
+
+              <p class="form-message" id="liquidLimitMessage" role="status" aria-live="polite"></p>
+            </section>
+
+            <section class="tab-panel" id="plasticLimitPanel" role="tabpanel" aria-labelledby="plasticLimitTab" hidden>
+              <div class="record-band">
+                <span class="record-label">Laboratory Mode</span>
+                <strong>Plastic Limit observation table with automatic Water Content and Average Plastic Limit.</strong>
+              </div>
+
+              <div class="liquid-toolbar">
+                <button class="secondary-button" id="resetPlasticLimitTable" type="button">Reset</button>
+                <button class="primary-button" id="savePlasticLimitTable" type="button">Save</button>
+              </div>
+
+              <div class="table-wrap">
+                <table class="observation-table liquid-limit-table" id="plasticLimitTable">
+                  <thead>
+                    <tr>
+                      <th>Trial</th>
+                      <th>Container No.</th>
+                      <th>Empty Container (W1)</th>
+                      <th>Wet Soil + Container (W2)</th>
+                      <th>Dry Soil + Container (W3)</th>
+                      <th>Water Content (%) (Auto)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td><input type="text" data-plastic-field="containerNo"></td>
+                      <td><input type="number" min="0" step="0.01" data-plastic-field="w1"></td>
+                      <td><input type="number" min="0" step="0.01" data-plastic-field="w2"></td>
+                      <td><input type="number" min="0" step="0.01" data-plastic-field="w3"></td>
+                      <td data-plastic-water-content>0.00</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td><input type="text" data-plastic-field="containerNo"></td>
+                      <td><input type="number" min="0" step="0.01" data-plastic-field="w1"></td>
+                      <td><input type="number" min="0" step="0.01" data-plastic-field="w2"></td>
+                      <td><input type="number" min="0" step="0.01" data-plastic-field="w3"></td>
+                      <td data-plastic-water-content>0.00</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td><input type="text" data-plastic-field="containerNo"></td>
+                      <td><input type="number" min="0" step="0.01" data-plastic-field="w1"></td>
+                      <td><input type="number" min="0" step="0.01" data-plastic-field="w2"></td>
+                      <td><input type="number" min="0" step="0.01" data-plastic-field="w3"></td>
+                      <td data-plastic-water-content>0.00</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td><input type="text" data-plastic-field="containerNo"></td>
+                      <td><input type="number" min="0" step="0.01" data-plastic-field="w1"></td>
+                      <td><input type="number" min="0" step="0.01" data-plastic-field="w2"></td>
+                      <td><input type="number" min="0" step="0.01" data-plastic-field="w3"></td>
+                      <td data-plastic-water-content>0.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="sieve-summary-grid liquid-summary-grid" aria-label="Plastic limit summary">
+                <div class="summary-tile">
+                  <span>Average Plastic Limit</span>
+                  <strong><span id="averagePlasticLimitValue">0.00</span>%</strong>
+                </div>
+              </div>
+
+              <p class="form-message" id="plasticLimitMessage" role="status" aria-live="polite"></p>
+            </section>
+
+            <section class="tab-panel" id="plasticityChartPanel" role="tabpanel" aria-labelledby="plasticityChartTab" hidden>
+              <div class="record-band">
+                <span class="record-label">Classification Mode</span>
+                <strong>Plasticity chart plotted from the calculated Liquid Limit and Plasticity Index.</strong>
+              </div>
+
+              <div class="plasticity-chart-layout">
+                <div class="gsd-chart-wrap plasticity-chart-wrap">
+                  <canvas id="plasticityChart" aria-label="Plasticity chart"></canvas>
+                </div>
+
+                <div class="sieve-summary-grid plasticity-summary-grid" aria-label="Plasticity chart summary">
+                  <div class="summary-tile">
+                    <span>Liquid Limit (LL)</span>
+                    <strong><span id="plasticitySummaryLL">0.00</span>%</strong>
+                  </div>
+                  <div class="summary-tile">
+                    <span>Plastic Limit (PL)</span>
+                    <strong><span id="plasticitySummaryPL">0.00</span>%</strong>
+                  </div>
+                  <div class="summary-tile">
+                    <span>Plasticity Index (PI)</span>
+                    <strong><span id="plasticitySummaryPI">0.00</span>%</strong>
+                  </div>
+                  <div class="summary-tile">
+                    <span>Coordinates</span>
+                    <strong id="plasticitySummaryCoordinates">(0.00, 0.00)</strong>
+                  </div>
+                  <div class="summary-tile">
+                    <span>Point Location</span>
+                    <strong id="plasticitySummaryLocation">On Chart</strong>
+                  </div>
+                  <div class="summary-tile">
+                    <span>Soil Type</span>
+                    <strong id="plasticitySummaryType">Clay</strong>
+                  </div>
+                  <div class="summary-tile">
+                    <span>Plasticity Level</span>
+                    <strong id="plasticitySummaryLevel">Low Plasticity</strong>
+                  </div>
+                </div>
+              </div>
+
+              <p class="form-message" id="plasticityChartMessage" role="status" aria-live="polite"></p>
+            </section>
+
+            <div class="form-actions sieve-actions">
+              <a class="secondary-button" href="soil-detection.html">Previous</a>
+              <button class="primary-button" type="button">Next</button>
+            </div>
+          </article>
+
+          <aside class="panel form-side-panel" aria-label="Atterberg workflow notes">
+            <p class="eyebrow">Current Step</p>
+            <h2>Limit Tests</h2>
+            <p>
+              This layout separates liquid limit and plastic limit records into dedicated tabs while preserving
+              the existing GeoLab Pro workflow and responsive laboratory style.
+            </p>
+            <div class="step-list">
+              <span class="step-item">1. Sample Details</span>
+              <span class="step-item">2. Sieve Analysis</span>
+              <span class="step-item">3. Soil Detection</span>
+              <span class="step-item active">4. Atterberg Limits</span>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

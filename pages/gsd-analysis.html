@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grain Size Distribution | GeoLab Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo-mark" aria-hidden="true">
+          <span class="logo-line"></span>
+          <span class="logo-core">GL</span>
+          <span class="logo-line"></span>
+        </div>
+        <div>
+          <span class="brand-name">GeoLab Pro</span>
+          <span class="brand-subtitle">Civil Geotechnical Lab</span>
+        </div>
+      </div>
+
+      <nav class="nav-list" aria-label="Main navigation">
+        <a class="nav-link" href="../index.html"><span class="nav-icon">H</span><span>Home</span></a>
+        <a class="nav-link" href="sample-management.html"><span class="nav-icon">S</span><span>Sample Details</span></a>
+        <a class="nav-link" href="sieve-analysis.html"><span class="nav-icon">A</span><span>Sieve Analysis</span></a>
+        <a class="nav-link" href="soil-detection.html"><span class="nav-icon">D</span><span>Soil Detection</span></a>
+        <a class="nav-link active" href="gsd-analysis.html" aria-current="page"><span class="nav-icon">G</span><span>GSD Curve</span></a>
+        <a class="nav-link" href="atterberg-limits.html"><span class="nav-icon">L</span><span>Atterberg Limits</span></a>
+      </nav>
+    </aside>
+
+    <div class="content-area">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" type="button" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div>
+          <p class="eyebrow">Grain Size Distribution</p>
+          <h1>GSD Curve</h1>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          <span>Dark Mode</span>
+        </button>
+      </header>
+
+      <main class="main-content">
+        <section class="gsd-layout" aria-labelledby="gsdTitle">
+          <article class="panel gsd-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Semi-Log Chart</p>
+                <h2 id="gsdTitle">Particle Size vs Percentage Passing</h2>
+              </div>
+              <button class="secondary-button" id="downloadGsdPng" type="button">Download PNG</button>
+            </div>
+
+            <div class="gsd-chart-wrap">
+              <canvas id="gsdChart" aria-label="Semi-log grain size distribution curve"></canvas>
+            </div>
+
+            <p class="form-message" id="gsdMessage" role="status" aria-live="polite"></p>
+
+            <div class="gsd-results" aria-label="GSD calculation results">
+              <article class="summary-tile"><span>D10</span><strong><span id="d10Value">--</span> mm</strong></article>
+              <article class="summary-tile"><span>D30</span><strong><span id="d30Value">--</span> mm</strong></article>
+              <article class="summary-tile"><span>D60</span><strong><span id="d60Value">--</span> mm</strong></article>
+              <article class="summary-tile"><span>Cu</span><strong id="cuValue">--</strong></article>
+              <article class="summary-tile"><span>Cc</span><strong id="ccValue">--</strong></article>
+              <article class="summary-tile"><span>Grading</span><strong id="gradingValue">--</strong></article>
+            </div>
+
+            <div class="form-actions sieve-actions">
+              <a class="secondary-button" href="sieve-analysis.html">Previous</a>
+              <button class="primary-button" id="nextGsdStep" type="button">Next</button>
+            </div>
+          </article>
+
+          <aside class="panel form-side-panel" aria-label="GSD status">
+            <p class="eyebrow">Current Step</p>
+            <h2>GSD Evaluation</h2>
+            <p>
+              This module uses completed sieve analysis data to plot the semi-log grain size distribution
+              curve and calculate D10, D30, D60, Cu, Cc, and grading type.
+            </p>
+            <div class="step-list">
+              <span class="step-item">1. Sample Details</span>
+              <span class="step-item">2. Sieve Analysis</span>
+              <span class="step-item">3. Soil Detection</span>
+              <span class="step-item active">4. GSD Curve</span>
+              <span class="step-item">5. Atterberg Limits</span>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

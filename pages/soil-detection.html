@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soil Detection | GeoLab Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo-mark" aria-hidden="true">
+          <span class="logo-line"></span>
+          <span class="logo-core">GL</span>
+          <span class="logo-line"></span>
+        </div>
+        <div>
+          <span class="brand-name">GeoLab Pro</span>
+          <span class="brand-subtitle">Civil Geotechnical Lab</span>
+        </div>
+      </div>
+
+      <nav class="nav-list" aria-label="Main navigation">
+        <a class="nav-link" href="../index.html"><span class="nav-icon">H</span><span>Home</span></a>
+        <a class="nav-link" href="sample-management.html"><span class="nav-icon">S</span><span>Sample Details</span></a>
+        <a class="nav-link" href="sieve-analysis.html"><span class="nav-icon">A</span><span>Sieve Analysis</span></a>
+        <a class="nav-link active" href="soil-detection.html" aria-current="page"><span class="nav-icon">D</span><span>Soil Detection</span></a>
+        <a class="nav-link" href="gsd-analysis.html"><span class="nav-icon">G</span><span>GSD Curve</span></a>
+        <a class="nav-link" href="atterberg-limits.html"><span class="nav-icon">L</span><span>Atterberg Limits</span></a>
+      </nav>
+    </aside>
+
+    <div class="content-area">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" type="button" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div>
+          <p class="eyebrow">Classification Workflow</p>
+          <h1>Soil Detection</h1>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          <span>Dark Mode</span>
+        </button>
+      </header>
+
+      <main class="main-content">
+        <section class="detection-layout" aria-labelledby="soilDetectionTitle">
+          <article class="panel detection-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Automatic Decision</p>
+                <h2 id="soilDetectionTitle">Soil Type Detection</h2>
+              </div>
+            </div>
+
+            <div class="workflow-card" id="soilWorkflowCard">
+              <div class="workflow-badge" id="soilTypeBadge">Awaiting Data</div>
+              <h3 id="soilTypeHeading">Run sieve analysis to detect soil type</h3>
+              <p id="soilTypeSummary">
+                The decision is based on percentage passing the 75 micron sieve.
+              </p>
+
+              <div class="workflow-stats">
+                <div class="summary-tile">
+                  <span>Passing 75 Micron</span>
+                  <strong><span id="passing75Value">0.00</span>%</strong>
+                </div>
+                <div class="summary-tile">
+                  <span>Detected Soil Group</span>
+                  <strong id="soilGroupValue">--</strong>
+                </div>
+                <div class="summary-tile">
+                  <span>Next Module</span>
+                  <strong id="nextModuleValue">--</strong>
+                </div>
+              </div>
+
+              <div class="workflow-path">
+                <div class="workflow-step active">Sieve Analysis</div>
+                <div class="workflow-step active">Soil Detection</div>
+                <div class="workflow-step" id="workflowDecisionStep">Decision Pending</div>
+              </div>
+            </div>
+
+            <p class="form-message" id="soilDetectionMessage" role="status" aria-live="polite"></p>
+
+            <div class="form-actions sieve-actions">
+              <a class="secondary-button" href="sieve-analysis.html">Previous</a>
+              <button class="primary-button" id="nextSoilDetectionStep" type="button">Next</button>
+            </div>
+          </article>
+
+          <aside class="panel form-side-panel" aria-label="Soil detection notes">
+            <p class="eyebrow">Rule Applied</p>
+            <h2>75 Micron Decision</h2>
+            <p>
+              If percentage passing the 75 micron sieve is 50% or less, the soil is treated as coarse grained
+              and continues to Grain Size Distribution. If it is greater than 50%, the soil is treated as fine
+              grained and proceeds to Atterberg Limits. Sedimentation analysis may be performed if detailed
+              particle-size distribution below 75 micron is required. This software continues with Atterberg
+              Limits for soil classification.
+            </p>
+            <div class="step-list">
+              <span class="step-item">1. Sample Details</span>
+              <span class="step-item">2. Sieve Analysis</span>
+              <span class="step-item active">3. Soil Detection</span>
+              <span class="step-item">4. Next Test</span>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
